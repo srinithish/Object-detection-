@@ -1,0 +1,39 @@
+
+
+###protoc compilations
+
+
+for /f %i in ('dir /b object_detection\protos\*.proto') do C:\Users\GELab\Documents\Development\SmartTableObjClassification\protoc-3.7.1-win32\bin\protoc object_detection\protos\%i --python_out=.
+
+
+
+###Cause of this error is installing object_detection library, So one of the solution which can work is running the below command inside models/research
+
+python setup.py install
+
+
+### create an environmnet and install tensorflow with pip and not anaconda
+
+
+###check gpu version of tensorflow in python
+
+import tensorflow as tf
+if tf.test.gpu_device_name():
+    print('Default GPU Device: {}'.format(tf.test.gpu_device_name()))
+else:
+    print("Please install GPU version of TF")
+	
+	
+##command for installation of tf_gpu
+
+pip install --ignore-installed --upgrade tensorflow-gpu
+
+
+### needed packages
+
+conda install pillow, lxml, jupyter, matplotlib, opencv
+
+### install jupyter notebook kernel
+
+python -m ipykernel install --user --name object_detection --display-name "Python (object_detection)"
+	
